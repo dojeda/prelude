@@ -57,7 +57,7 @@
         ("HTML Viewer" "open %o")))
 
 (defun prelude-latex-mode-defaults ()
-  (turn-on-auto-fill)
+  ;;(turn-on-auto-fill)
   (abbrev-mode +1))
 
 (setq prelude-latex-mode-hook 'prelude-latex-mode-defaults)
