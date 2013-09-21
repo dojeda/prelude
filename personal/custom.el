@@ -6,13 +6,15 @@
 ;;(require 'main-line)
 
 (defun my-latex-hook ()
-  (linum-mode 1) ; numero de linea a la izquierda
-  (auto-fill-mode 0) ;sub-word mode
+  (linum-mode 1) ;; numero de linea a la izquierda
+  (auto-fill-mode 0) ;; no filling !
   (set-input-method "latin-prefix")
-  (flyspell-mode t)
-  (reftex-mode 1)
+  (flyspell-mode t) ;; spell check
+  (reftex-mode 1)   ;; reftex
+  (smartparens-mode 0) ;; no smartparen because it's laggy as of sept2013
   )
 (add-hook 'TeX-mode-hook 'my-latex-hook)
+(setq reftex-plug-into-AUCTeX t)
 
 (electric-pair-mode nil)
 
