@@ -126,5 +126,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;;'(default ((t (:family "Droid Sans Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
+ '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
  '(ecb-default-highlight-face ((t (:background "DarkOliveGreen4"))))
  '(semantic-highlight-func-current-tag-face ((t (:background "gray10")))))
