@@ -145,3 +145,11 @@
 ;; modelica mode
 (add-to-list 'auto-mode-alist '("\\.mdc$"          . modelica-mode))
 (add-to-list 'auto-mode-alist '("\\.mo$"           . modelica-mode))
+
+
+;; eshell stuff
+(defun eshell/clear ()
+  "04Dec2001 - sailor, to clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
