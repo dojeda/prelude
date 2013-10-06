@@ -16,6 +16,10 @@
 (add-hook 'TeX-mode-hook 'my-latex-hook)
 (setq reftex-plug-into-AUCTeX t)
 
+(defun reftex-format-cref (label def-fmt)
+  (format "\\cref{%s}" label))
+(setq reftex-format-ref-function 'reftex-format-cref)
+
 (electric-pair-mode nil)
 
 ;; (require 'sr-speedbar)
