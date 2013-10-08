@@ -117,6 +117,7 @@
  '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
  '(org-agenda-files (quote ("~/These/devel/cell-cvs-sna/notes.org")))
+ '(prelude-auto-save nil)
  '(prelude-guru nil)
  '(prelude-whitespace nil)
  '(reftex-bibliography-commands (quote ("bibliography" "nobibliography" "addbibresource")))
@@ -129,7 +130,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;;'(default ((t (:family "Droid Sans Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
  '(ecb-default-highlight-face ((t (:background "DarkOliveGreen4"))))
  '(semantic-highlight-func-current-tag-face ((t (:background "gray10")))))
