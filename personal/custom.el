@@ -104,6 +104,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-PDF-mode t)
+ '(TeX-default-unit-for-image "\\linewidth")
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
@@ -132,4 +133,5 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
  '(ecb-default-highlight-face ((t (:background "DarkOliveGreen4"))))
+ '(hl-line ((t (:inherit highlight :background "dark slate gray"))))
  '(semantic-highlight-func-current-tag-face ((t (:background "gray10")))))
