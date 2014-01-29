@@ -117,6 +117,8 @@
  '(ediff-split-window-function (quote split-window-horizontally))
  '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
+ '(flycheck-clang-language-standard "c++11")
+ '(jedi:key-complete [(meta return)])
  '(org-agenda-files (quote ("~/These/devel/cell-cvs-sna/notes.org")))
  '(prelude-auto-save nil)
  '(prelude-guru nil)
@@ -131,7 +133,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
  '(ecb-default-highlight-face ((t (:background "DarkOliveGreen4"))))
  '(hl-line ((t (:inherit highlight :background "dark slate gray"))))
  '(semantic-highlight-func-current-tag-face ((t (:background "gray10")))))
