@@ -1,18 +1,18 @@
 ;;;
 ;;; Code:
-;; (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-;; ;;(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-;; ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-;; ;;(add-to-list 'semantic-default-submodes 'global-semantic-show-unmatched-syntax-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-highlight-edits-mode)
-;; ;;(add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-show-unmatched-syntax-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-edits-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
 
-;; ;; Activate semantic
-;; (semantic-mode 1)
+;; Activate semantic
+(semantic-mode 1)
 
 ;; (require 'semantic/bovine/c)
 ;; (require 'semantic/bovine/gcc)
@@ -181,10 +181,10 @@
 ;; cmake
 (require 'cmake-mode)
 (setq auto-mode-alist
-      (append
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
-       '(("\\.cmake\\'" . cmake-mode))
-       auto-mode-alist))
+     (append
+      '(("CMakeLists\\.txt\\'" . cmake-mode))
+      '(("\\.cmake\\'" . cmake-mode))
+      auto-mode-alist))
 
 ;; spice mode
 (autoload 'spice-mode "spice-mode" "Spice/Layla Editing Mode" t)
