@@ -3,4 +3,3 @@
 
 (global-set-key [f7] 'comment-region)
 (global-set-key [f8] 'uncomment-region)
-
