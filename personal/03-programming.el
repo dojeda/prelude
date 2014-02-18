@@ -205,3 +205,15 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+;; cpputils
+
+;; (require 'cpputils-cmake)
+;; (add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
+;; (add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
+;; ;; OPTIONAL, somebody reported that they can use this package with Fortran
+;; (add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
+;; ;; OPTIONAL, avoid typing full path when starting gdb
+;; (global-set-key (kbd "C-c C-g")
+;;                 '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
+
