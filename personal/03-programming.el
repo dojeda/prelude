@@ -51,6 +51,7 @@
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.0/include
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
   /usr/include
+  /Users/david/PostDoc/devel/vns-model/M2SL/src/c++
 "
                                          ))))
   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
@@ -208,7 +209,7 @@
 
 ;; cpputils
 
-;; (require 'cpputils-cmake)
+;;(require 'cpputils-cmake)
 ;; (add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
 ;; (add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
 ;; ;; OPTIONAL, somebody reported that they can use this package with Fortran

@@ -118,6 +118,7 @@
  '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
  '(fill-column 80)
+ '(flycheck-clang-include-path (quote ("/Users/david/PostDoc/devel/vns-model/M2SL/src/c++")))
  '(flycheck-clang-language-standard "c++11")
  '(jedi:key-complete [(meta return)])
  '(org-agenda-files (quote ("~/These/devel/cell-cvs-sna/notes.org")))
