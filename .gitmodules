@@ -1,0 +1,3 @@
+[submodule "submodules/ESS"]
+	path = submodules/ESS
+	url = https://github.com/emacs-ess/ESS.git
