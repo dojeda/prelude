@@ -1,5 +1,10 @@
+;;; 03-programming.el --- personal programming configuration
+;;; Commentary:
 ;;;
 ;;; Code:
+
+;; FIXME: this is not working. The modes are being set by the customized
+;; variables in custom.el
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -12,7 +17,7 @@
 ;;(add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
 
 ;; Activate semantic
-(semantic-mode 1)
+;;(semantic-mode 1)
 
 ;; (require 'semantic/bovine/c)
 ;; (require 'semantic/bovine/gcc)
@@ -34,6 +39,7 @@
 (require 'auto-complete-clang)
 (require 'auto-complete-config)
 (require 'yasnippet)
+(yas/reload-all)
 
 (setq ac-auto-start nil)
 (setq ac-quick-help-delay 0.5)
@@ -51,6 +57,7 @@
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.0/include
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
   /usr/include
+  /usr/local/include
 "
                                          ))))
   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
@@ -68,6 +75,9 @@
 ;; ac-source-gtags
 (my-ac-config)
 
+;; /Users/david/PostDoc/devel/VNSModel/src/c++
+;; /Users/david/PostDoc/devel/VNSModel/M2SL/src/c++
+
 ;; (ac-config-default)
 ;; (setq ac-auto-start 3)     ;; start after 3 characters were typed
 ;; (setq ac-auto-show-menu t) ;; show menu immediately...
@@ -76,61 +86,64 @@
 
 ;; (global-auto-complete-mode)
 
-;; ;; cambiar entre fuente y header en C/C++
-(defvar c++-default-header-ext "h")
-(defvar c++-default-source-ext "cpp")
-(defvar c++-header-ext-regexp "\\.\\(hpp\\|hxx\\|h\\|\hh\\|H\\)$")
-(defvar c++-source-ext-regexp "\\.\\(cpp\\|cxx\\|c\\|\cc\\|C\\)$")
-(defvar c++-source-extension-list '("c" "cc" "C" "cpp" "cxx" "c++"))
-(defvar c++-header-extension-list '("h" "hh" "H" "hpp" "hxx"))(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-(defun toggle-source-header()
-  "Switches to the source buffer if currently in the header buffer and vice versa."
-  (interactive)
-  (let ((buf (current-buffer))
-        (name (file-name-nondirectory (buffer-file-name)))
-        file
-        offs)
-    (setq offs (string-match c++-header-ext-regexp name))
-    (if offs
-        (let ((lst c++-source-extension-list)
-              (ok nil)
-              ext)
-          (setq file (substring name 0 offs))
-          (while (and lst (not ok))
-            (setq ext (car lst))
-            (if (file-exists-p (concat file "." ext))
-                  (setq ok t))
-            (setq lst (cdr lst)))
-          (if ok
-              (find-file (concat file "." ext))))
-      (let ()
-        (setq offs (string-match c++-source-ext-regexp name))
-        (if offs
-            (let ((lst c++-header-extension-list)
-                  (ok nil)
-                  ext)
-              (setq file (substring name 0 offs))
-              (while (and lst (not ok))
-                (setq ext (car lst))
-                (if (file-exists-p (concat file "." ext))
-                    (setq ok t))
-                (setq lst (cdr lst)))
-              (if ok
-                  (find-file (concat file "." ext)))))))))
-(global-set-key [f9] 'toggle-source-header)
+;; ;; ;; cambiar entre fuente y header en C/C++
+;; (defvar c++-default-header-ext "h")
+;; (defvar c++-default-source-ext "cpp")
+;; (defvar c++-header-ext-regexp "\\.\\(hpp\\|hxx\\|h\\|\hh\\|H\\)$")
+;; (defvar c++-source-ext-regexp "\\.\\(cpp\\|cxx\\|c\\|\cc\\|C\\)$")
+;; (defvar c++-source-extension-list '("c" "cc" "C" "cpp" "cxx" "c++"))
+;; (defvar c++-header-extension-list '("h" "hh" "H" "hpp" "hxx"))(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; (defun toggle-source-header()
+;;   "Switches to the source buffer if currently in the header buffer and vice versa."
+;;   (interactive)
+;;   (let ((buf (current-buffer))
+;;         (name (file-name-nondirectory (buffer-file-name)))
+;;         file
+;;         offs)
+;;     (setq offs (string-match c++-header-ext-regexp name))
+;;     (if offs
+;;         (let ((lst c++-source-extension-list)
+;;               (ok nil)
+;;               ext)
+;;           (setq file (substring name 0 offs))
+;;           (while (and lst (not ok))
+;;             (setq ext (car lst))
+;;             (if (file-exists-p (concat file "." ext))
+;;                   (setq ok t))
+;;             (setq lst (cdr lst)))
+;;           (if ok
+;;               (find-file (concat file "." ext))))
+;;       (let ()
+;;         (setq offs (string-match c++-source-ext-regexp name))
+;;         (if offs
+;;             (let ((lst c++-header-extension-list)
+;;                   (ok nil)
+;;                   ext)
+;;               (setq file (substring name 0 offs))
+;;               (while (and lst (not ok))
+;;                 (setq ext (car lst))
+;;                 (if (file-exists-p (concat file "." ext))
+;;                     (setq ok t))
+;;                 (setq lst (cdr lst)))
+;;               (if ok
+;;                   (find-file (concat file "." ext)))))))))
+;; (global-set-key [f9] 'toggle-source-header)
 
 (defun my-c-hook ()
   ;; PUT ALL THESE BACK ON WHEN INSTALLED CEDET
-  ;; (local-set-key (kbd "C-c C-c") 'compile)
+  (local-set-key (kbd "C-c C-c") 'compile)
   ;;(local-set-key [f9] 'eassist-switch-h-cpp)
+  (local-set-key [f9] 'ff-find-related-file)
   ;; (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
   ;; (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
   ;; ;;
   ;; (local-set-key "\C-c>" 'semantic-comsemantic-ia-complete-symbolplete-analyze-inline)
   ;; (local-set-key "\C-c=" 'semantic-decoration-include-visit)
 
-  ;; (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+  (local-set-key "\C-cj" 'semantic-ia-fast-jump)
   ;; (local-set-key "\C-cq" 'semantic-ia-show-doc)
   ;; (local-set-key "\C-cs" 'semantic-ia-show-summary)
   ;; (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
@@ -138,7 +151,8 @@
   ;; (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
   ;; (local-set-key) "\C-ce" 'eassist-list-methods
   ;; (local-set-key "\C-c\C-r" 'semantic-symref)
-  ;;(yas/minor-mode-on)
+  (semantic-mode t)
+  (yas-minor-mode-on)
   ;;(auto-complete-mode 1)
   (nlinum-mode 1) ; numero de linea a la izquierda
   (subword-mode 1) ;sub-word mode
@@ -207,10 +221,10 @@
     (erase-buffer)))
 
 ;; cpputils
-
-;; (require 'cpputils-cmake)
-;; (add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
-;; (add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
+;; (add-to-list 'load-path "~/apps/cpputils-cmake" )
+(require 'cpputils-cmake)
+(add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
+(add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
 ;; ;; OPTIONAL, somebody reported that they can use this package with Fortran
 ;; (add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
 ;; ;; OPTIONAL, avoid typing full path when starting gdb

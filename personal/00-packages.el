@@ -23,5 +23,6 @@
    color-identifiers-mode
    git-messenger
    guide-key
-   ;; cpputils-cmake
+   multiple-cursors
+   cpputils-cmake
 ))
