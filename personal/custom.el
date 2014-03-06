@@ -119,6 +119,7 @@
  '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
  '(fill-column 80)
+ '(flycheck-clang-include-path (quote ("/Users/david/PostDoc/devel/vns-model/M2SL/src/c++")))
  '(flycheck-clang-language-standard "c++11")
  '(global-flycheck-mode t nil (flycheck))
  '(global-semantic-highlight-func-mode nil)
