@@ -27,4 +27,5 @@
    cpputils-cmake
    multi-term
    yasnippet
+   iedit
 ))

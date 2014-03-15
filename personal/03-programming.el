@@ -17,6 +17,7 @@
 ;;(add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
 
 ;; Activate semantic
+(require 'semantic)
 ;;(semantic-mode 1)
 
 ;; (require 'semantic/bovine/c)
@@ -86,57 +87,58 @@
 
 ;; (global-auto-complete-mode)
 
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; ;; ;; cambiar entre fuente y header en C/C++
-;; (defvar c++-default-header-ext "h")
-;; (defvar c++-default-source-ext "cpp")
-;; (defvar c++-header-ext-regexp "\\.\\(hpp\\|hxx\\|h\\|\hh\\|H\\)$")
-;; (defvar c++-source-ext-regexp "\\.\\(cpp\\|cxx\\|c\\|\cc\\|C\\)$")
-;; (defvar c++-source-extension-list '("c" "cc" "C" "cpp" "cxx" "c++"))
-;; (defvar c++-header-extension-list '("h" "hh" "H" "hpp" "hxx"))(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; ;; cambiar entre fuente y header en C/C++
+(defvar c++-default-header-ext "h")
+(defvar c++-default-source-ext "cpp")
+(defvar c++-header-ext-regexp "\\.\\(hpp\\|hxx\\|h\\|\hh\\|H\\)$")
+(defvar c++-source-ext-regexp "\\.\\(cpp\\|cxx\\|c\\|\cc\\|C\\)$")
+(defvar c++-source-extension-list '("c" "cc" "C" "cpp" "cxx" "c++"))
+(defvar c++-header-extension-list '("h" "hh" "H" "hpp" "hxx"))(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; (defun toggle-source-header()
-;;   "Switches to the source buffer if currently in the header buffer and vice versa."
-;;   (interactive)
-;;   (let ((buf (current-buffer))
-;;         (name (file-name-nondirectory (buffer-file-name)))
-;;         file
-;;         offs)
-;;     (setq offs (string-match c++-header-ext-regexp name))
-;;     (if offs
-;;         (let ((lst c++-source-extension-list)
-;;               (ok nil)
-;;               ext)
-;;           (setq file (substring name 0 offs))
-;;           (while (and lst (not ok))
-;;             (setq ext (car lst))
-;;             (if (file-exists-p (concat file "." ext))
-;;                   (setq ok t))
-;;             (setq lst (cdr lst)))
-;;           (if ok
-;;               (find-file (concat file "." ext))))
-;;       (let ()
-;;         (setq offs (string-match c++-source-ext-regexp name))
-;;         (if offs
-;;             (let ((lst c++-header-extension-list)
-;;                   (ok nil)
-;;                   ext)
-;;               (setq file (substring name 0 offs))
-;;               (while (and lst (not ok))
-;;                 (setq ext (car lst))
-;;                 (if (file-exists-p (concat file "." ext))
-;;                     (setq ok t))
-;;                 (setq lst (cdr lst)))
-;;               (if ok
-;;                   (find-file (concat file "." ext)))))))))
+(defun toggle-source-header()
+  "Switches to the source buffer if currently in the header buffer and vice versa."
+  (interactive)
+  (let ((buf (current-buffer))
+        (name (file-name-nondirectory (buffer-file-name)))
+        file
+        offs)
+    (setq offs (string-match c++-header-ext-regexp name))
+    (if offs
+        (let ((lst c++-source-extension-list)
+              (ok nil)
+              ext)
+          (setq file (substring name 0 offs))
+          (while (and lst (not ok))
+            (setq ext (car lst))
+            (if (file-exists-p (concat file "." ext))
+                  (setq ok t))
+            (setq lst (cdr lst)))
+          (if ok
+              (find-file (concat file "." ext))))
+      (let ()
+        (setq offs (string-match c++-source-ext-regexp name))
+        (if offs
+            (let ((lst c++-header-extension-list)
+                  (ok nil)
+                  ext)
+              (setq file (substring name 0 offs))
+              (while (and lst (not ok))
+                (setq ext (car lst))
+                (if (file-exists-p (concat file "." ext))
+                    (setq ok t))
+                (setq lst (cdr lst)))
+              (if ok
+                  (find-file (concat file "." ext)))))))))
 ;; (global-set-key [f9] 'toggle-source-header)
 
 (defun my-c-hook ()
   ;; PUT ALL THESE BACK ON WHEN INSTALLED CEDET
   (local-set-key (kbd "C-c C-c") 'compile)
   ;;(local-set-key [f9] 'eassist-switch-h-cpp)
-  (local-set-key [f9] 'ff-find-related-file)
+  ;;(local-set-key [f9] 'ff-find-related-file)
+  (local-set-key [f9] 'toggle-source-header)
   ;; (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
   ;; (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
   ;; ;;
@@ -151,7 +153,7 @@
   ;; (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
   ;; (local-set-key) "\C-ce" 'eassist-list-methods
   ;; (local-set-key "\C-c\C-r" 'semantic-symref)
-  (semantic-mode t)
+  ;; (semantic-mode t)
   (yas-minor-mode-on)
   ;;(auto-complete-mode 1)
   (nlinum-mode 1) ; numero de linea a la izquierda
@@ -231,3 +233,8 @@
 ;; (global-set-key (kbd "C-c C-g")
 ;;                 '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
 
+
+;; iedit-mode
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+;;;

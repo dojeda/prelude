@@ -123,7 +123,7 @@
  '(flycheck-clang-language-standard "c++11")
  '(global-flycheck-mode t nil (flycheck))
  '(global-semantic-highlight-func-mode nil)
- '(global-semantic-idle-breadcrumbs-mode t nil (semantic/idle))
+ '(global-semantic-idle-breadcrumbs-mode nil nil (semantic/idle))
  '(jedi:key-complete [(meta return)])
  '(prelude-auto-save nil)
  '(prelude-guru nil)
